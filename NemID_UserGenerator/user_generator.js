@@ -22,7 +22,7 @@ app.post('/generate-nemId', jsonParser, async (req, res) => {
 
     // Create nemID: first 5 digits random + last 4 digits of CPR
     let cprEnd = cpr.slice(-4);
-    let firstNemID = Math.random() * 10000;
+    let firstNemID = Math.floor(Math.random() * 90000) + 10000;
 
     let response = { "nemId": + firstNemID.toFixed(0) + cprEnd };
 

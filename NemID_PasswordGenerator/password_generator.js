@@ -19,6 +19,7 @@ app.listen(8089, (err) => {
 app.post('/generate-password-nemID', jsonParser, async (req, res) => {
     let nemId = req.body.nemId;
     let cpr = req.body.cpr;
+    console.log(nemId);
 
     // Make nemID password (first 2 digits of nemID + last 2 digits of cpr)
     let firstNemId = nemId.slice(0, 2);

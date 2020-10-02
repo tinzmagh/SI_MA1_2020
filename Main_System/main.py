@@ -61,7 +61,7 @@ def createMsgpack(person, cpr, nemId):
 	with open(str(cpr) + '.msgpack', 'wb') as outfile:
 		packed = msgpack.packb(json.dumps(json_person))
 		outfile.write(packed)
-		
+
 # 04
 for index, person in df.iterrows():
 	cpr = cprGenerator(person['DateOfBirth'])
