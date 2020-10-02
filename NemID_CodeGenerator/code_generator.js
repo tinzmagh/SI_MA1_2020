@@ -33,65 +33,16 @@ app.post('/nemid-auth', jsonParser, async (req, res) => {
     let sql = "SELECT * FROM user WHERE NemID = ? AND Password = ?";
 
     // 02
-
     db.get(sql, [nemId, nemIdCode], (err, rows) => {
         if (rows !== undefined) {
             res.status(200).send(response);
             
         } else if(err){
-        res.status(403).send();
+        res.status(403).send({error: err});
         }
         else {
-        res.status(403).send();
+        res.status(403).send({err_msg: "Failed to authenticate!" });
         }
         
     });
-
-
 });
-
-
-// db.all(sql, [nemId, nemIdCode], (err, rows) => {
-//     if (err) {
-//         console.log(err);
-//     } else {
-//         if (nemId === 464521403 && nemIdCode === 4603) {
-//             console.log("yay")
-//             return res.status(200).send(response);
-//         }
-//         else {
-//             console.log("sad")
-//             return res.status(403).send(); 
-//         }
-//     }
-// });
-
-
-// else {
-//     if (rows.row.NemID != nemId && rows.row.Password != nemIdCode) {
-//         console.log("sad")
-//         return res.status(200).send(response);
-//     }
-//     else {
-//         console.log("hi")
-//         return res.status(403).send(); 
-//     }
-// }
-
-
-
-// db.all(sql, [], (err, rows) => {
-//     if (err) {
-//         return console.log(err);
-//     }
-//     rows.forEach((row) => {
-//         let userNemIdCode = row.NemID.slice(0,2) + row.CPR.slice(-2);
-//         if (nemId === row.NemID) {
-//             console.log("hi")
-//             return res.status(200).send(response);
-//         } else {
-//             console.log("saaad")
-//             return res.status(403).send(); 
-//         }
-//     });
-// });

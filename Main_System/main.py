@@ -6,6 +6,7 @@ import requests
 import json
 import msgpack
 
+# OBS! We have coded the whole thing together, so we haven't written names on each file.
 
 # TODO 
 # 01. Read from people.csv
